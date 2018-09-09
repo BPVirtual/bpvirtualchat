@@ -2,7 +2,10 @@ var mongoose = require('mongoose');
  
 var authorSchema = mongoose.Schema({
     _id: mongoose.Schema.Types.ObjectId,
-    cpf: String,
+    cpf: {
+        type: String, 
+        required: true
+    },
     name: {
         firstName: {
             type: String,

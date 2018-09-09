@@ -19,53 +19,19 @@ app.use(fileUpload());
 mongoose.connect('mongodb://bpvirtualchat:BP2018Virtualchat@ds163410.mlab.com:63410/bpvirtualchat');
  
 app.get('/', function (req, res) {
-  res.sendFile(__dirname + '/index.html');
+  res.sendFile(__dirname + '/public/index.html');
 });
  
-var template = require('./template.js');
+var template = require('./script/template.js');
 app.get('/template', template.get);
  
-var upload = require('./upload.js');
+var upload = require('./script/upload.js');
 app.post('/', upload.post);
-
-
-
-
-/*
-app.get('/nome', (req, res) => {
-
-    var Authors = mongoose.model('authors', yourSchema);
-
-    // find all athletes who play tennis, selecting the 'name' and 'age' fields
-    Authors.find({ 'name': 'Tennis' }, function (err, authors) {
-    if (err) return handleError(err);
-    // 'athletes' contains the list of athletes that match the criteria.
-    res.send(authors);
-    });
-});
-*/
 
 
 mongoose.Promise = global.Promise;
 //Get the default connection
 var db = mongoose.connection;
-
-/*
-app.get('/nome', (req, res) => {
-
-    db.collection('authors').find(
-
-        //req.params,
-
-        {'name': {'cpf': '22515918859'}},
-        function(err, result){
-
-            if(err) return console.log(err);
-            res.send(result);
-        }
-    );
-});
-*/
 
 app.get('/nomes/:cpf', (req, res) => {
     //console.log(req.params);
@@ -74,6 +40,5 @@ app.get('/nomes/:cpf', (req, res) => {
       res.send(result);
     });
   });
-
 
   module.exports = app;

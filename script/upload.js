@@ -4,7 +4,7 @@ var Author = require('./author');
  
 exports.post = function (req, res) {
     if (!req.files)
-        return res.status(400).send('No files were uploaded.');
+        return res.status(400).send('Nenhum arquivo foi carregado.');
      
     var authorFile = req.files.file;
  
@@ -25,6 +25,6 @@ exports.post = function (req, res) {
             if (err) throw err;
          });
           
-         res.send(authors.length + ' authors have been successfully uploaded.');
+         res.send(authors.length + ' autores foram carregados com sucesso.');
      });
 };
