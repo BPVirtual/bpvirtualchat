@@ -39,6 +39,14 @@ app.get('/nomes/:cpf', (req, res) => {
       if (err) return console.log(err);
       res.send(result);
     });
-  });
+});
+
+app.get('/nomes', (req, res) => {
+    //console.log(req.params);
+    db.collection('authors').find().toArray((err, result) => {
+      if (err) return console.log(err);
+      res.send(result);
+    });
+});
 
   module.exports = app;
