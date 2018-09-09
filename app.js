@@ -1,16 +1,20 @@
-var app = require('express')();
+'use strict';
+
+var express = require('express');
 var fileUpload = require('express-fileupload');
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
  
-var server = require('http').Server(app);
+//var server = require('http').Server(app);
+
+var app = express();
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
  
 app.use(fileUpload());
  
-server.listen(3001);
+//server.listen(3001);
  
 mongoose.connect('mongodb://bpvirtualchat:BP2018Virtualchat@ds163410.mlab.com:63410/bpvirtualchat');
  
@@ -70,3 +74,6 @@ app.get('/nomes/:cpf', (req, res) => {
       res.send(result);
     });
   });
+
+
+  module.exports = app;
