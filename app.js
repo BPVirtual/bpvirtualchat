@@ -33,17 +33,17 @@ mongoose.Promise = global.Promise;
 //Get the default connection
 var db = mongoose.connection;
 
-app.get('/nomes/:cpf', (req, res) => {
+app.get('/proponentes/:cpf', (req, res) => {
     //console.log(req.params);
-    db.collection('authors').find(req.params).toArray((err, result) => {
+    db.collection('proponentes').find(req.params).toArray((err, result) => {
       if (err) return console.log(err);
       res.send(result);
     });
 });
 
-app.get('/nomes', (req, res) => {
+app.get('/proponentes', (req, res) => {
     //console.log(req.params);
-    db.collection('authors').find().toArray((err, result) => {
+    db.collection('proponentes').find().toArray((err, result) => {
       if (err) return console.log(err);
       res.send(result);
     });
