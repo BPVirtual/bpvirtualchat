@@ -25,6 +25,6 @@ exports.post = function (req, res) {
             if (err) throw err;
          });
           
-         res.send(proponentes.length + ' autores foram carregados com sucesso.');
+         res.send(proponentes.length + ' proponentes foram carregados com sucesso.');
      });
 };
