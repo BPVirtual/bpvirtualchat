@@ -1,30 +1,30 @@
 var csv = require('fast-csv');
 var mongoose = require('mongoose');
-var Author = require('./author');
+var Proponente = require('./proponente');
  
 exports.post = function (req, res) {
     if (!req.files)
         return res.status(400).send('Nenhum arquivo foi carregado.');
      
-    var authorFile = req.files.file;
+    var proponentesFile = req.files.file;
  
-    var authors = [];
+    var proponentes = [];
          
     csv
-     .fromString(authorFile.data.toString(), {
+     .fromString(proponentesFile.data.toString(), {
          headers: true,
          ignoreEmpty: true
      })
      .on("data", function(data){
          data['_id'] = new mongoose.Types.ObjectId();
           
-         authors.push(data);
+         proponentes.push(data);
      })
      .on("end", function(){
-         Author.create(authors, function(err, documents) {
+         Proponente.create(proponentes, function(err, documents) {
             if (err) throw err;
          });
           
-         res.send(authors.length + ' autores foram carregados com sucesso.');
+         res.send(proponentes.length + ' autores foram carregados com sucesso.');
      });
 };
