@@ -29,7 +29,7 @@ exports.get = function(req, res) {
         'cpf': '12345678900',
         'nome': 'nomeProponente',
         'sobrenome': 'sobrenomeProponente',
-        'nacionalidade': 'naciolidade',
+        'nacionalidade': 'nacionalidade',
         'dataNascimento': '01/01/2018',
         'sexo': 'M/F',
         'estadoCivil': 'VIÚVO/SOLTEIRO/CASADO/DIVORCIADO',
