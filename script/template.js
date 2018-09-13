@@ -39,7 +39,7 @@ exports.get = function(req, res) {
         'salario': '1.000,00',
         'endereco.logradouro': 'endereco',
         'endereco.bairro': 'bairro',
-        'endereco.cep': '00000000',
+        'endereco.cep': '12345678',
         'endereco.cidade': 'cidade',
         'endereco.uf': 'UF',
         'empresa.razaoSocial': 'nomeEmpresa',
