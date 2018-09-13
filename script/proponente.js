@@ -2,20 +2,32 @@ var mongoose = require('mongoose');
  
 var proponenteSchema = mongoose.Schema({
     _id: mongoose.Schema.Types.ObjectId,
-    cpf: {
-        type: String, 
-        required: true
+    cpf: String,
+    nome: String,
+    sobrenome: String,
+    nacionalidade: String,
+    dataNascimento: String,
+    sexo: String,
+    estadoCivil: String,
+    profissao: String,
+    cargo: String,
+    dataAdmissao: String,
+    salario: String,
+    endereco: {
+        logradouro: String,
+        bairro: String,
+        cep: String,
+        cidade: String,
+        uf: String
     },
-    nome: {
-        type: String, 
-        required: true
+    empresa: {
+        razaoSocial: String,
+        cnpj: String
     },
-    sobrenome: {
-        type: String, 
-        required: true
-    },
-    cargo: String
-    
+    consultor: {
+        nome: String,
+        email: String
+    }
 });
  
 var Proponente = mongoose.model('Proponente', proponenteSchema);

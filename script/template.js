@@ -6,10 +6,47 @@ exports.get = function(req, res) {
         'cpf',
         'nome',
         'sobrenome',
-        'cargo'
+        'nacionalidade',
+        'dataNascimento',
+        'sexo',
+        'estadoCivil',
+        'profissao',
+        'cargo',
+        'dataAdmissao',
+        'salario',
+        'endereco.logradouro',
+        'endereco.bairro',
+        'endereco.cep',
+        'endereco.cidade',
+        'endereco.uf',
+        'empresa.razaoSocial',
+        'empresa.cnpj',
+        'consultor.nome',
+        'consultor.email'
     ];
 
-    var json = {'cpf': '11122233300', 'nome': 'Teste', 'sobrenome': 'Teste2', 'cargo': 'Teste3'}
+    var json = {
+        'cpf': '12345678900',
+        'nome': 'nomeProponente',
+        'sobrenome': 'sobrenomeProponente',
+        'nacionalidade': 'naciolidade',
+        'dataNascimento': '01/01/2018',
+        'sexo': 'M/F',
+        'estadoCivil': 'VIÚVO/SOLTEIRO/CASADO/DIVORCIADO',
+        'profissao': 'EMPREGADO - OUTROS',
+        'cargo': 'Cargo',
+        'dataAdmissao': '01/01/2018',
+        'salario': '1.000,00',
+        'endereco.logradouro': 'endereco',
+        'endereco.bairro': 'bairro',
+        'endereco.cep': '00000000',
+        'endereco.cidade': 'cidade',
+        'endereco.uf': 'UF',
+        'empresa.razaoSocial': 'nomeEmpresa',
+        'empresa.cnpj': '12345678901234',
+        'consultor.nome': 'seuNome',
+        'consultor.email': 'seuEmail'
+    }
  
     var csv = json2csv(json, fields);
  
