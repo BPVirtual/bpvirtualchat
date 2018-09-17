@@ -73,11 +73,21 @@ app.get('/feedback/:cpf', (req, res) => {
 });
 
 app.post('/feedback', (req, res) => {
+ 
+ var collection = db.collection('feedbacks');
+ var feedback = { cpf: req.body.cpf,  nota: req.body.nota };
+
+ collection.insert(feedback, function(err, result) {
+   if(err) { throw err; }
+   db.close();   
+  });
+  /*
   var myobj = [{ cpf: req.body.cpf, nota: req.body.nota }];
   db.collection("feedbacks").insertMany(myobj, function(err, res) {
     if (err) throw err;
     res.send("Document inserted");
   });
+  */
 });
 
 /*
