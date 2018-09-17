@@ -49,4 +49,48 @@ app.get('/proponentes', (req, res) => {
     });
 });
 
+/*
+
+  Teste feedBack
+
+*/
+ 
+var feedbackSchema = mongoose.Schema({
+    _id: mongoose.Schema.Types.ObjectId,
+    cpf: String,
+    nota: String
+});
+ 
+var Feedback = mongoose.model('Feedback', feedbackSchema);
+ 
+
+app.get('/feedback', (req, res) => {
+  //console.log(req.params);
+  db.collection('feedback').find().toArray((err, result) => {
+    if (err) return console.log(err);
+    res.send(result);
+  });
+});
+
+app.get('/feedback/:cpf', (req, res) => {
+  //console.log(req.params);
+  db.collection('feedback').find(req.params).toArray((err, result) => {
+    if (err) return console.log(err);
+    res.send(result);
+  });
+});
+
+app.post('/feedback',(req, res) => { 
+ 
+  var item = { 
+    cpf: req.body.cpf, 
+    nota: req.body.nota
+  }; 
+ 
+  var data = new Feedback(item); 
+  data.save(); 
+  //res.statusCode; 
+  res.status(201).json({result: "Done!"})
+ });
+
   module.exports = app;
