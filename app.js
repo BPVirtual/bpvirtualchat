@@ -81,15 +81,21 @@ app.get('/feedback/:cpf', (req, res) => {
 });
 
 app.post('/feedback',(req, res) => { 
+
+  var feedbacks = [];
+  var data = [];
+
+
+  data['_id'] = new mongoose.Types.ObjectId();
+  data['cpf'] = req.body.cpf;
+  data['nota'] = req.body.nota;    
+
+  feedbacks.push(data);
+
+  Feedback.create(feedbacks, function(err, documents) {
+    if (err) throw err;
+  });
  
-  var item = { 
-    cpf: req.body.cpf, 
-    nota: req.body.nota
-  }; 
- 
-  var data = new Feedback(item); 
-  data.save(); 
-  //res.statusCode; 
   res.status(201).json({result: "Done!"})
  });
 
