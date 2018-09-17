@@ -58,7 +58,7 @@ app.get('/proponentes', (req, res) => {
  
 app.get('/feedback', (req, res) => {
   //console.log(req.params);
-  db.collection('feedback').find().toArray((err, result) => {
+  db.collection('feedbacks').find().toArray((err, result) => {
     if (err) return console.log(err);
     res.send(result);
   });
@@ -66,7 +66,7 @@ app.get('/feedback', (req, res) => {
 
 app.get('/feedback/:cpf', (req, res) => {
   //console.log(req.params);
-  db.collection('feedback').find(req.params).toArray((err, result) => {
+  db.collection('feedbacks').find(req.params).toArray((err, result) => {
     if (err) return console.log(err);
     res.send(result);
   });
@@ -74,7 +74,16 @@ app.get('/feedback/:cpf', (req, res) => {
 
 app.post('/feedback', (req, res) => {
   //console.log(req.params);
-  db.collection('feedback').insert(req.params);
+
+  var feedbacks = [];
+  var data = [];
+
+  data['cpf'] = req.body.cpf;
+  data['nota'] = req.body.nota;    
+
+  feedbacks.push(data);
+
+  db.collection('feedbacks').insert(feedbacks);
   res.status(201).json({result: "Subiu!"})
 });
 
