@@ -54,16 +54,8 @@ app.get('/proponentes', (req, res) => {
   Teste feedBack
 
 */
- 
-var feedbackSchema = mongoose.Schema({
-    _id: mongoose.Schema.Types.ObjectId,
-    cpf: String,
-    nota: String
-});
- 
-var Feedback = mongoose.model('Feedback', feedbackSchema);
- 
 
+ 
 app.get('/feedback', (req, res) => {
   //console.log(req.params);
   db.collection('feedback').find().toArray((err, result) => {
@@ -80,9 +72,16 @@ app.get('/feedback/:cpf', (req, res) => {
   });
 });
 
+app.post('/feedback', (req, res) => {
+  //console.log(req.params);
+  db.collection('feedback').insert(req.params);
+  res.status(201).json({result: "Subiu!"})
+});
+
+/*
 var feedback = require('./script/feedback.js');
 app.post('/feedback', feedback.post);
-/*
+
 app.post('/feedback',(req, res) => { 
 
   var feedbacks = [];
