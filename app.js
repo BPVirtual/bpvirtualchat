@@ -82,21 +82,14 @@ app.get('/feedback/:cpf', (req, res) => {
 
 app.post('/feedback',(req, res) => { 
 
-  var feedbacks = [];
-  var data = [];
-
-
-  data['_id'] = new mongoose.Types.ObjectId();
-  data['cpf'] = req.body.cpf;
-  data['nota'] = req.body.nota;    
-
-  feedbacks.push(data);
-
-  Feedback.create(feedbacks, function(err, documents) {
-    if (err) throw err;
-  });
- 
-  res.status(201).json({result: "Done!"})
+  var myData = new Feedback(req.body);
+  myData.save()
+    .then(item => {
+      res.send("item saved to database");
+    })
+    .catch(err => {
+      res.status(400).send("unable to save to database");
+    });
  });
 
   module.exports = app;
