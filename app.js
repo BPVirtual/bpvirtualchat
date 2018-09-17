@@ -74,7 +74,7 @@ app.get('/feedback/:cpf', (req, res) => {
 
 app.post('/feedback', (req, res) => {
   var myobj = [{ _id: new mongoose.Types.ObjectId(), cpf: req.body.cpf, nota: req.body.nota }];
-  dbo.collection("feedbacks").insertMany(myobj, function(err, res) {
+  db.collection("feedbacks").insertMany(myobj, function(err, res) {
     if (err) throw err;
     console.log(res.insertedCount + " documents inserted");
     db.close();
