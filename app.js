@@ -73,10 +73,10 @@ app.get('/feedback/:cpf', (req, res) => {
 });
 
 app.post('/feedback', (req, res) => {
-  var myobj = { cpf: req.body.cpf, nota: req.body.nota };
-  dbo.collection("feedbacks").insertOne(myobj, function(err, res) {
+  var myobj = [{ cpf: req.body.cpf, nota: req.body.nota }];
+  dbo.collection("feedbacks").insertMany(myobj, function(err, res) {
     if (err) throw err;
-    console.log("1 document inserted");
+    console.log(res.insertedCount + " documents inserted");
     db.close();
   });
 });
