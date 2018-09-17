@@ -56,7 +56,7 @@ app.get('/proponentes', (req, res) => {
 */
 
  
-app.get('/feedback', (req, res) => {
+app.get('/feedbacks', (req, res) => {
   //console.log(req.params);
   db.collection('feedbacks').find().toArray((err, result) => {
     if (err) return console.log(err);
@@ -64,7 +64,7 @@ app.get('/feedback', (req, res) => {
   });
 });
 
-app.get('/feedback/:cpf', (req, res) => {
+app.get('/feedbacks/:cpf', (req, res) => {
   //console.log(req.params);
   db.collection('feedbacks').find(req.params).toArray((err, result) => {
     if (err) return console.log(err);
@@ -72,7 +72,7 @@ app.get('/feedback/:cpf', (req, res) => {
   });
 });
 
-app.post('/feedback', (req, res) => {
+app.post('/feedbacks', (req, res) => {
  
  var collection = db.collection('feedbacks');
  var feedback = { cpf: req.body.cpf,  nota: req.body.nota };
