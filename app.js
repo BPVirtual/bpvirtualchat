@@ -81,6 +81,7 @@ app.post('/feedback', (req, res) => {
    if(err) { throw err; }
    db.close();   
   });
+  res.status(201).json({result: "Registro inserido!"})
   /*
   var myobj = [{ cpf: req.body.cpf, nota: req.body.nota }];
   db.collection("feedbacks").insertMany(myobj, function(err, res) {
