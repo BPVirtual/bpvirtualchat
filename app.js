@@ -81,7 +81,7 @@ app.get('/feedback/:cpf', (req, res) => {
 });
 
 var feedback = require('./script/feedback.js');
-app.post('/', feedback.post);
+app.post('/feedback', feedback.post);
 /*
 app.post('/feedback',(req, res) => { 
 
