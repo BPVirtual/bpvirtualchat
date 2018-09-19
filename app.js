@@ -33,6 +33,17 @@ mongoose.Promise = global.Promise;
 //Get the default connection
 var db = mongoose.connection;
 
+app.get('/crypto', (req, res) => {
+	const crypto = require('crypto');
+	const secret = 'd01d079cef72e6e3d7fd7408d586341df0cd85435e6f4bc8c2a0d3ac7295e5d6';
+	var key = req.query.key;//'eb52c9ac01f65db82471cbf7ab711e64215bc03ad34797859af0558d39597cce';
+	var	resource = req.query.resource;//'templates/36396/output';
+	var	workspace = req.query.workspace;//'bpvirtualchat@gmail.com';
+
+	const hash = crypto.createHmac('sha256', secret).update(key + resource + workspace).digest('hex');
+	res.send(hash);
+});
+
 app.get('/proponentes/:cpf', (req, res) => {
     //console.log(req.params);
     db.collection('proponentes').find(req.params).toArray((err, result) => {
