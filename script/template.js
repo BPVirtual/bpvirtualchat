@@ -1,12 +1,9 @@
-/*var json2csv = require('json2csv').parse;
+var json2csv = require('json2csv').parse;
  
 exports.get = function(req, res) {
  
     var fields = [
-        {
-          label: 'CPF Maroto', // (optional, column will be labeled 'path.to.something' if not defined)
-          value: 'cpf', // data.path.to.something
-        },
+        'cpf',
         'nome',
         'sobrenome',
         'nacionalidade',
@@ -59,22 +56,3 @@ exports.get = function(req, res) {
     res.send(csv);
  
 };
-*/
-
-const Json2csvParser = require('json2csv').Parser;
-
-exports.get = function(req, res) {
- 
-    const fields = [{
-      label: 'Car Name',
-      value: 'cpf'
-    },{
-      label: 'Price USD',
-      value: 'nome'
-    }];
-
-    const json2csvParser = new Json2csvParser({ fields });
-    const csv = json2csvParser.parse(myCars);
-
-    res.send(csv);
-}
