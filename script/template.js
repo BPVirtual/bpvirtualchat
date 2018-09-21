@@ -3,7 +3,10 @@ var json2csv = require('json2csv').parse;
 exports.get = function(req, res) {
  
     var fields = [
-        'cpf',
+        {
+          label: 'CPF Maroto', // (optional, column will be labeled 'path.to.something' if not defined)
+          value: 'cpf', // data.path.to.something
+        },
         'nome',
         'sobrenome',
         'nacionalidade',
