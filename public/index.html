@@ -136,7 +136,7 @@
             var objCPF = document.getElementById('username');
 
             //será substituido pela chamada da API
-            if (objCPF.value == '123.456.789-00' || objCPF.value == '406.071.138-12' ||
+            /*if (objCPF.value == '123.456.789-00' || objCPF.value == '406.071.138-12' ||
                     objCPF.value == '225.159.188-59' || objCPF.value == '309.718.818-55' ||
                     objCPF.value == '262.214.418-03' || objCPF.value == '011.328.533-70') {
                 objPrincipal.style.display = "none";
@@ -147,7 +147,12 @@
             }
             else {
                 objAlert.style.display = "block";
-            }
+            }*/
+            objPrincipal.style.display = "none";
+            objTarget.style.display = "block";
+            objAlert.style.display = "none";
+            buildChat({ authType: BlipChat.DEV_AUTH });
+            toogleChat();
         }
     </script>
 
@@ -196,7 +201,7 @@
                     if (authConfig && authConfig.authType == BlipChat.DEV_AUTH) {
                         authConfig.userIdentity = document.getElementById('username').value ? document.getElementById('username').value : '01684334-71c7-40e0-ad1a-5ce372de1a08', // Required
                             authConfig.userPassword = document.getElementById('password').value ? document.getElementById('password').value : 'MjU2OWNmOTItYmRjZi00Njg0LTljZDktMWQxNjQxYmYxMGU1', // Required
-                            authConfig.userName = document.getElementById('fullName').value ? document.getElementById('fullName').value : '', // Optional
+                            authConfig.userName = document.getElementById('username').value ? document.getElementById('username').value : '', // Optional
                             authConfig.userEmail = document.getElementById('email').value ? document.getElementById('email').value : ''// Optional
                     }
 
