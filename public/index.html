@@ -52,12 +52,12 @@
                 </div>
                 <p>
                     <label for="username">CPF</label>
-                    <input type="text" class="form-control" id="username" name="username" placeholder="___.___.___-__"
+                    <input type="tel" class="form-control" id="username" name="username" placeholder="000.000.000-00"
                         maxlength="15" data-mask="000.000.000-00" required>
                 </p>
                 <p>
                     <label for="password">Senha*</label>
-                    <input type="password" class="form-control" id="password" name="password" placeholder="Preencha sua senha"
+                    <input type="password" pattern="[0-9]*" inputmode="numeric" class="form-control" id="password" name="password" placeholder="Preencha sua senha"
                         maxlength="8" required>
                     <p class="font-italic">*Sua senha corresponde à junção do ano de sua admissão e o ano de seu
                         nascimento.<br>
