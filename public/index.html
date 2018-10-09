@@ -50,6 +50,9 @@
                         <img src="logo.png" class="img-fluid rounded" alt="Brasilprev">
                     </p>
                 </div>
+                <div id="alert" class="alert alert-danger" role="alert" style="display: none">
+                    CPF e/ou senha incorreto(s).
+                </div>
                 <p>
                     <label for="username">CPF</label>
                     <input type="tel" class="form-control" id="username" name="username" placeholder="000.000.000-00"
@@ -129,16 +132,21 @@
         function login() {
             var objPrincipal = document.getElementById('principal');
             var objTarget = document.getElementById('sdk-target');
-            if (objPrincipal.style.display = "block") {
+            var objAlert = document.getElementById('alert');
+            var objCPF = document.getElementById('username');
+
+            //será substituido pela chamada da API
+            if (objCPF.value == '123.456.789-00' || objCPF.value == '406.071.138-12' ||
+                    objCPF.value == '225.159.188-59' || objCPF.value == '309.718.818-55') {
                 objPrincipal.style.display = "none";
                 objTarget.style.display = "block";
+                objAlert.style.display = "none";
+                buildChat({ authType: BlipChat.DEV_AUTH });
+                toogleChat();
             }
             else {
-                objPrincipal.style.display = "block";
-                objTarget.style.display = "none";
+                objAlert.style.display = "block";
             }
-            buildChat({ authType: BlipChat.DEV_AUTH });
-            toogleChat();
         }
     </script>
 
