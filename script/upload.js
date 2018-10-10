@@ -37,8 +37,9 @@ exports.post = function (req, res) {
 
          //data['_id'] = new mongoose.Types.ObjectId();
          data['senha'] = senha;
-         data['confirmado'] = 'N';
-         data['data'] = new Date();
+         data['dataCadastro'] = new Date();
+         data['dataPrimeiroLogin'] = "";
+         data['dataUltimoLogin'] = "";
 
 
          login.push(data);

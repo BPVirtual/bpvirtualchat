@@ -117,9 +117,11 @@ app.post('/login', (req, res) => {
   var collection = db.collection('logins');
 
   var	key = 'teoBP';
-  const hash = crypto.createHmac('sha256', req.body.senha).update(key).digest('hex');
+  const hash = crypto.createHmac('sha256', req.body.password).update(key).digest('hex');
 
-  var login = { cpf: req.body.cpf,  senha: hash };
+  var username = req.body.username.replace(/\D/g, '');
+  
+  var login = { cpf: username,  senha: hash };
  
   collection.findOne(login, function(err, result){
 
@@ -127,9 +129,17 @@ app.post('/login', (req, res) => {
       
   if(result !== null){
 
-    var newvalues = { $set: {"confirmado": "S", "data": new Date().toString() } };
+    if(result.dataPrimeiroLogin == ""){
 
-    //atualiza flag e hora do login
+      var newvalues = { $set: {"dataPrimeiroLogin": new Date().toString(), "dataUltimoLogin": new Date().toString() } };
+
+    } else {
+
+      var newvalues = { $set: {"dataUltimoLogin": new Date().toString() } };
+
+    }
+    
+    //atualiza hora do login
     collection.updateOne(login, newvalues, function(err, res) {
     
       if (err) throw err;
@@ -151,6 +161,26 @@ app.post('/login', (req, res) => {
   //db.close(); 
   });
 });
+
+
+app.post('/propostas', (req, res) => {
+ 
+  var collection = db.collection('propostas');
+  var proposta = {         
+    numeroProposta: req.body.numeroProposta,
+    dadosProposta: req.body.dadosProposta,
+    cpf: req.body.cpf,
+    dataAceite: req.body.dataAceite,
+    ip: req.body.ip 
+  };
+ 
+  collection.insertOne(proposta, function(err, result) {
+    if(err) { throw err; }
+    //db.close();   
+   });
+   res.status(201).json({result: "Registro inserido!"})
+
+ });
 
 
 
