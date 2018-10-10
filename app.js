@@ -6,6 +6,8 @@ var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 const crypto = require('crypto');
  
+var path = require('path');
+
 //var server = require('http').Server(app);
 
 var app = express();
@@ -14,6 +16,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
  
 app.use(fileUpload());
+
+app.use(express.static(path.join(__dirname, 'images')));
  
 //server.listen(3001);
  
@@ -21,6 +25,10 @@ mongoose.connect('mongodb://bpvirtualchat:BP2018Virtualchat@ds163410.mlab.com:63
  
 app.get('/', function (req, res) {
   res.sendFile(__dirname + '/public/index.html');
+});
+
+app.get('/upload', function (req, res) {
+  res.sendFile(__dirname + '/public/upload.html');
 });
  
 var template = require('./script/template.js');
