@@ -10,26 +10,5 @@ var loginSchema = mongoose.Schema({
 });
  
 var Login = mongoose.model('Login', loginSchema);
- 
-exports.post = function (req, res) {
-     
-    var login = [];
-
-    var item = { 
-        cpf: req.body.cpf, 
-        senha: req.body.senha,
-        confirmado: "S",
-        data: new Date()
-    };
-         
-    login.push(item);
-
-    Login.create(login, function(err, documents) {
-        if (err) throw err;
-    });
-
-    res.send(login.length + ' login salvo.');
-     
-};
 
 module.exports = Login;

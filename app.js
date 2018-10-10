@@ -4,6 +4,7 @@ var express = require('express');
 var fileUpload = require('express-fileupload');
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
+const crypto = require('crypto');
  
 //var server = require('http').Server(app);
 
@@ -34,7 +35,7 @@ mongoose.Promise = global.Promise;
 var db = mongoose.connection;
 
 app.get('/crypto', (req, res) => {
-	const crypto = require('crypto');
+	
 	const secret = 'd01d079cef72e6e3d7fd7408d586341df0cd85435e6f4bc8c2a0d3ac7295e5d6';
 	var key = req.query.key;//'eb52c9ac01f65db82471cbf7ab711e64215bc03ad34797859af0558d39597cce';
 	var	resource = req.query.resource;//'templates/36396/output';
@@ -101,6 +102,49 @@ app.post('/feedbacks', (req, res) => {
   });
   */
 });
+
+
+app.post('/login', (req, res) => {
+ 
+  var collection = db.collection('logins');
+
+  var	key = 'teoBP';
+  const hash = crypto.createHmac('sha256', req.body.senha).update(key).digest('hex');
+
+  var login = { cpf: req.body.cpf,  senha: hash };
+ 
+  collection.findOne(login, function(err, result){
+
+  if(err) { throw err; }
+      
+  if(result !== null){
+
+    var newvalues = { $set: {"confirmado": "S", "data": new Date().toString() } };
+
+    //atualiza flag e hora do login
+    collection.updateOne(login, newvalues, function(err, res) {
+    
+      if (err) throw err;
+      //db.close();
+    });
+
+    //usuario encontrado
+    res.sendStatus(200);
+    //console.log(result);
+    //res.send(result);
+
+  } else {
+
+    //usuario o senha incorreta
+    res.sendStatus(403);
+
+  }
+ 
+  //db.close(); 
+  });
+});
+
+
 
 /*
 var feedback = require('./script/feedback.js');
