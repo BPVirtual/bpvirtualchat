@@ -55,16 +55,18 @@
                 </div>
                 <p>
                     <label for="username">CPF</label>
-                    <input type="tel" class="form-control" id="username" name="username" placeholder="000.000.000-00"
-                        maxlength="15" data-mask="000.000.000-00" required>
+                    <input type="tel" class="form-control" id="username" name="username" placeholder="000.000.000-00" maxlength="15" data-mask="000.000.000-00"
+                        required>
                 </p>
                 <p>
                     <label for="password">Senha*</label>
-                    <input type="password" pattern="[0-9]*" inputmode="numeric" class="form-control" id="password" name="password"
-                        placeholder="Preencha sua senha" maxlength="8" required>
-                    <p class="font-italic">*Sua senha corresponde à junção do ano de seu nascimento e o ano de sua
-                        admissão.<br>
-                        Ex.: Ano de Nascimento: <b>1992</b> | Ano de Admissão: <b>2016</b> -> Senha: <b>20161992</b>
+                    <input type="password" pattern="[0-9]*" inputmode="numeric" class="form-control" id="password" name="password" placeholder="Preencha sua senha"
+                        maxlength="8" required>
+                    <p class="font-italic">*Sua senha corresponde à junção do ano de seu nascimento e o ano de sua admissão.
+                        <br> Ex.: Ano de Nascimento:
+                        <b>1992</b> | Ano de Admissão:
+                        <b>2016</b> -> Senha:
+                        <b>20161992</b>
                     </p>
                 </p>
                 <p>
@@ -130,29 +132,35 @@
 
     <script>
         function login() {
-            var objPrincipal = document.getElementById('principal');
-            var objTarget = document.getElementById('sdk-target');
-            var objAlert = document.getElementById('alert');
-            var objCPF = document.getElementById('username');
 
-            //será substituido pela chamada da API
-            /*if (objCPF.value == '123.456.789-00' || objCPF.value == '406.071.138-12' ||
-                    objCPF.value == '225.159.188-59' || objCPF.value == '309.718.818-55' ||
-                    objCPF.value == '262.214.418-03' || objCPF.value == '011.328.533-70') {
-                objPrincipal.style.display = "none";
-                objTarget.style.display = "block";
-                objAlert.style.display = "none";
-                buildChat({ authType: BlipChat.DEV_AUTH });
-                toogleChat();
+            try {
+                var objPrincipal = document.getElementById('principal');
+                var objTarget = document.getElementById('sdk-target');
+                var objAlert = document.getElementById('alert');
+                var objCPF = document.getElementById('username');
+                var objPassword = document.getElementById('password');
+
+                const data = { username: objCPF.value, password: objPassword.value };
+                $.ajax({
+                    url: "/login",
+                    type: "POST",
+                    data: data,
+
+                    success: function (result, status, xhr) {
+                        objPrincipal.style.display = "none";
+                        objTarget.style.display = "block";
+                        objAlert.style.display = "none";
+                        buildChat({ authType: BlipChat.DEV_AUTH });
+                        toogleChat();
+                    },
+
+                    error: function (error) {
+                        objAlert.style.display = "block";
+                    }
+                });
+            } catch (err) {
+                alert(err);
             }
-            else {
-                objAlert.style.display = "block";
-            }*/
-            objPrincipal.style.display = "none";
-            objTarget.style.display = "block";
-            objAlert.style.display = "none";
-            buildChat({ authType: BlipChat.DEV_AUTH });
-            toogleChat();
         }
     </script>
 
@@ -267,7 +275,7 @@
         })();
 
     </script>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
         crossorigin="anonymous"></script>
