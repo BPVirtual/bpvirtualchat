@@ -18,6 +18,7 @@ app.use(bodyParser.json());
 app.use(fileUpload());
 
 app.use(express.static(path.join(__dirname, 'images')));
+app.use(express.static(path.join(__dirname, 'images/teo')));
  
 //server.listen(3001);
  
