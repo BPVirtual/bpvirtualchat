@@ -21,7 +21,7 @@ app.use(express.static(path.join(__dirname, 'images')));
  
 //server.listen(3001);
  
-mongoose.connect('mongodb://bpvirtualchat:BP2018Virtualchat@ds163410.mlab.com:63410/bpvirtualchat');
+mongoose.connect('mongodb://bpvirtualchat:BP2018Virtualchat@ds163410.mlab.com:63410/bpvirtualchat', { useNewUrlParser: true });
  
 app.get('/', function (req, res) {
   res.sendFile(__dirname + '/public/index.html');
