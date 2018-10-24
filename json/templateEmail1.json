@@ -1,0 +1,54 @@
+{
+    "personalizations": [
+        {
+            "to": [
+                {
+                    "email": "willehow@gmail.com"
+                },
+                {
+                    "email": "renan.tsm92@gmail.com"
+                },
+                {
+                    "email": "diogobrito2000@yahoo.com.br"
+                }
+            ],
+            "substitutions": {
+                "--cpf--": "{cpf}",
+                "--nome--": "{nome}",
+                "--sobrenome--": "{sobrenome}",
+                "--emailProponente--": "{emailProponente}",
+                "--nacionalidade--": "{nacionalidade}",
+                "--dataNascimento--": "{dataNascimento}",
+                "--sexo--": "{sexo}",
+                "--estadoCivil--": "{estadoCivil}",
+                "--endereco.logradouro--": "{endereco.logradouro}",
+                "--endereco.bairro--": "{endereco.bairro}",
+                "--endereco.cep--": "{endereco.cep}",
+                "--endereco.cidade--": "{endereco.cidade}",
+                "--endereco.uf--": "{endereco.uf}",
+                "--empresa.razaoSocial--": "{empresa.razaoSocial}",
+                "--empresa.cnpj--": "{empresa.cnpj}",
+                "--profissao--": "{profissao}",
+                "--cargo--": "{cargo}",
+                "--dataAdmissao--": "{dataAdmissao}",
+                "--salario--": "{salario}",
+                "--perfil--": "{perfil}",
+                "--tipoPlano--": "{tipoPlano}",
+                "--tipoTributacao--": "{tipoTributacao}",
+                "--objetivo--": "{objetivo}",
+                "--valorContribuicao--": "{valorContribuicao}",
+                "--tempoContribuicao--": "{tempoContribuicao}",
+                "--taxaAnoBP--": "{taxaAnoBP}",
+                "--valorFuturo--": "{valorFuturo}",
+                "--consultor.nome--": "{consultor.nome}",
+                "--consultor.email--": "{consultor.email}",
+                "--dataAssinaturaProposta--": "{dataAssinaturaProposta}",
+                "--propostaPDF--": "{propostaPDF}"
+            }
+        }
+    ],
+    "from": {
+        "email": "bpvirtualchat@gmail.com"
+    },
+    "template_id": "1b1ce8d6-d3cd-4e36-b217-1791706af9df"
+}

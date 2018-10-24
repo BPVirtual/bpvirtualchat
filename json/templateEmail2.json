@@ -1,0 +1,36 @@
+{
+    "personalizations": [
+        {
+            "to": [
+                {
+                    "email": "{emailProponente}"
+                }
+            ],
+            "bcc": [
+                {
+                    "email": "willehow@gmail.com"
+                },
+                {
+                    "email": "renan.tsm92@gmail.com"
+                },
+                {
+                    "email": "diogobrito2000@yahoo.com.br"
+                }
+            ],
+            "substitutions": {
+                "--nome--": "{nome}",
+                "--sobrenome--": "{sobrenome}",
+                "--tipoPlano--": "{tipoPlano}",
+                "--tipoTributacao--": "{tipoTributacao}",
+                "--valorContribuicao--": "{valorContribuicao}",
+                "--tempoContribuicao--": "{tempoContribuicao}",
+                "--dataAssinaturaProposta--": "{dataAssinaturaProposta}",
+                "--propostaPDF--": "{propostaPDF}"
+            }
+        }
+    ],
+    "from": {
+        "email": "bpvirtualchat@gmail.com"
+    },
+    "template_id": "8b4700c0-4ed0-4548-b3d6-96679603c1fb"
+}

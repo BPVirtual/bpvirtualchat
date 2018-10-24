@@ -99,7 +99,7 @@ app.post('/feedbacks', (req, res) => {
 
  collection.insertOne(feedback, function(err, result) {
    if(err) { throw err; }
-   db.close();   
+   //db.close();   
   });
   res.status(201).json({result: "Registro inserido!"})
   /*
@@ -109,6 +109,14 @@ app.post('/feedbacks', (req, res) => {
     res.send("Document inserted");
   });
   */
+});
+
+app.get('/logins', (req, res) => {
+  //console.log(req.params);
+  db.collection('logins').find().toArray((err, result) => {
+    if (err) return console.log(err);
+    res.send(result);
+  });
 });
 
 
