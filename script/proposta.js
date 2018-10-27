@@ -3,10 +3,16 @@ var mongoose = require('mongoose');
 var propostaSchema = mongoose.Schema({
     _id: mongoose.Schema.Types.ObjectId,
     numeroProposta: String,
-    dadosProposta: String,
-    cpf: String,
     dataAceite: String,
-    ip: String
+    dadosProposta: {
+        cpf: String,
+        nomeCompleto: String,
+        dataNascimento: String,
+        tipoPlano: String,
+        tipoTributacao: String,
+        valorContribuicao: String,
+        direcionamentoFundos: String
+    }
 });
  
 var Proposta = mongoose.model('Proposta', propostaSchema);
@@ -17,10 +23,14 @@ exports.post = function (req, res) {
 
     var item = { 
         numeroProposta: req.body.numeroProposta,
-        dadosProposta: req.body.dadosProposta,
-        cpf: req.body.cpf,
         dataAceite: req.body.dataAceite,
-        ip: req.body.ip
+        dadosProposta: req.body.dadosProposta.cpf,
+        dadosProposta: req.body.dadosProposta.nomeCompleto,
+        dadosProposta: req.body.dadosProposta.dataNascimento,
+        dadosProposta: req.body.dadosProposta.tipoPlano,
+        dadosProposta: req.body.dadosProposta.tipoTributacao,
+        dadosProposta: req.body.dadosProposta.valorContribuicao,
+        dadosProposta: req.body.dadosProposta.direcionamentoFundos
     };
          
     propostas.push(item);

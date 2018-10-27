@@ -172,16 +172,22 @@ app.post('/login', (req, res) => {
   });
 });
 
+app.get('/propostas', (req, res) => {
+  //console.log(req.params);
+  db.collection('propostas').find().toArray((err, result) => {
+    if (err) return console.log(err);
+    res.send(result);
+  });
+});
+
 
 app.post('/propostas', (req, res) => {
  
   var collection = db.collection('propostas');
   var proposta = {         
-    numeroProposta: req.body.numeroProposta,
-    dadosProposta: req.body.dadosProposta,
-    cpf: req.body.cpf,
-    dataAceite: req.body.dataAceite,
-    ip: req.body.ip 
+        numeroProposta: req.body.numeroProposta,
+        dataAceite: req.body.dataAceite,
+        dadosProposta: req.body.dadosProposta
   };
  
   collection.insertOne(proposta, function(err, result) {
