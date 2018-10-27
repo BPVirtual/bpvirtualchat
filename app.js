@@ -33,8 +33,8 @@ app.get('/upload', function (req, res) {
   res.sendFile(__dirname + '/public/upload.html');
 });
 
-app.get('/consulta', function (req, res) {
-  res.sendFile(__dirname + '/public/consulta.html');
+app.get('/consultas/propostas', function (req, res) {
+  res.sendFile(__dirname + '/public/consultas/propostas.html');
 });
  
 var template = require('./script/template.js');
