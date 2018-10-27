@@ -32,6 +32,10 @@ app.get('/', function (req, res) {
 app.get('/upload', function (req, res) {
   res.sendFile(__dirname + '/public/upload.html');
 });
+
+app.get('/consulta', function (req, res) {
+  res.sendFile(__dirname + '/public/consulta.html');
+});
  
 var template = require('./script/template.js');
 app.get('/template', template.get);
