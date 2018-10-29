@@ -20,7 +20,7 @@
         <table id="table" class="table table-striped">
             <thead>
                 <tr>
-                    <th data-field="numeroProposta">Número da Proposta</th>
+                    <th data-field="numeroProposta" data-formatter="LinkFormatter">Número da Proposta</th>
                     <th data-field="dataAceite">Data de Aceite</th>
                     <th data-field="dadosProposta.cpf">CPF</th>
                     <th data-field="dadosProposta.nomeCompleto">Nome Completo</th>
@@ -40,6 +40,10 @@
                 data: jsonFromFile
             })
         });
+
+        function LinkFormatter(value, row, index) {
+            return "<a href='"+value+"' target=_blank>"+value.replace('http://bit.ly/','')+"</a>";
+        }
     </script>
 </body>
 

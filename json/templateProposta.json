@@ -1,0 +1,13 @@
+{ 
+	"numeroProposta": "{url}",
+	"dataAceite": "{dataAssinaturaProposta}",
+	"dadosProposta": {
+		"cpf": "{cpf}",
+        "nomeCompleto": "{nomeProponente}",
+        "dataNascimento": "{dataNascimento}",
+        "tipoPlano": "{tipoPlano}",
+        "tipoTributacao": "{tipoTributacao}",
+        "valorContribuicao": "{valorContribuicaoFormatado}",
+        "direcionamentoFundos": "{direcionamentoFundos}"
+	}
+}
