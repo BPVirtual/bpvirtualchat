@@ -4,6 +4,7 @@ var propostaSchema = mongoose.Schema({
     _id: mongoose.Schema.Types.ObjectId,
     numeroProposta: String,
     dataAceite: String,
+    ip: String,
     dadosProposta: {
         cpf: String,
         nomeCompleto: String,
@@ -24,6 +25,7 @@ exports.post = function (req, res) {
     var item = { 
         numeroProposta: req.body.numeroProposta,
         dataAceite: req.body.dataAceite,
+        ip: req.body.ip,
         dadosProposta: req.body.dadosProposta.cpf,
         dadosProposta: req.body.dadosProposta.nomeCompleto,
         dadosProposta: req.body.dadosProposta.dataNascimento,

@@ -179,7 +179,8 @@
         var sendMessage;
         var destroyChat;
         var buildChat;
-
+        
+        var ip = '';
         var target;
         var builder;
         (function () {
@@ -229,6 +230,17 @@
 
                     const customStyle = '';
 
+                    
+                    //Pega o IP via API
+                      $.ajax({
+                        type:"GET",
+                        url:"https://api.ipify.org?format=json",
+                        success: function(data) {
+                        ip = data.ip;
+                        },
+                        dataType: 'json',
+                    });
+
                     builder = new BlipChat()
                         .withAppKey(appKey)
                         .withButton({ "color": "#2f469d" })
@@ -238,6 +250,7 @@
                         .withAccount({
                             "fullName": document.getElementById('username').value ? document.getElementById('username').value : 'Teste',
                             "email": document.getElementById('email').value ? document.getElementById('email').value : 'teste@teste.com',
+                            "address": ip,
                             "encryptMessageContent": true
                         })
                         //.withCustomStyle(customStyle)

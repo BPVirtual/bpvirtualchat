@@ -1,6 +1,7 @@
 { 
 	"numeroProposta": "{url}",
-	"dataAceite": "{dataAssinaturaProposta}",
+    "dataAceite": "{dataAssinaturaProposta}",
+    "ip": "{ip}",
 	"dadosProposta": {
 		"cpf": "{cpf}",
         "nomeCompleto": "{nomeProponente}",
