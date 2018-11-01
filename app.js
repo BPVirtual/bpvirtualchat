@@ -36,6 +36,18 @@ app.get('/upload', function (req, res) {
 app.get('/consultas/propostas', function (req, res) {
   res.sendFile(__dirname + '/public/consultas/propostas.html');
 });
+
+app.get('/consultas/proponentes', function (req, res) {
+  res.sendFile(__dirname + '/public/consultas/proponentes.html');
+});
+
+app.get('/consultas/logins', function (req, res) {
+  res.sendFile(__dirname + '/public/consultas/logins.html');
+});
+
+app.get('/consultas/feedbacks', function (req, res) {
+  res.sendFile(__dirname + '/public/consultas/feedbacks.html');
+});
  
 var template = require('./script/template.js');
 app.get('/template', template.get);
