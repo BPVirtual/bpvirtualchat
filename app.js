@@ -191,6 +191,7 @@ app.post('/propostas', (req, res) => {
   var proposta = {         
         numeroProposta: req.body.numeroProposta,
         dataAceite: req.body.dataAceite,
+        ip: req.body.ip,
         dadosProposta: req.body.dadosProposta
   };
  
