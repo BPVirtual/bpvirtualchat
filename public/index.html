@@ -183,14 +183,6 @@
         var ip = '';
         var target;
         var builder;
-
-        var propLocation;
-        navigator.geolocation.getCurrentPosition(function(location) {
-
-            propLocation = location.coords.latitude + "," + location.coords.longitude;
-
-        });
-
         (function () {
             window.onload = function () {
                 toogleChat = function () {
@@ -259,7 +251,6 @@
                             "fullName": document.getElementById('username').value ? document.getElementById('username').value : 'Teste',
                             "email": document.getElementById('email').value ? document.getElementById('email').value : 'teste@teste.com',
                             "address": ip,
-                            "city": propLocation,
                             "encryptMessageContent": true
                         })
                         //.withCustomStyle(customStyle)
