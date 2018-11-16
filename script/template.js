@@ -22,7 +22,7 @@ exports.get = function(req, res) {
         'empresa.razaoSocial',
         'empresa.cnpj',
         'consultor.nome',
-        'consultor.email'
+        'consultor.email',
     ];
 
     var json = {
@@ -47,8 +47,10 @@ exports.get = function(req, res) {
         'consultor.nome': 'seuNome',
         'consultor.email': 'seuEmail'
     }
+
+    var opt = { fields, delimiter: ';', quote: ""}
  
-    var csv = json2csv(json, fields);
+    var csv = json2csv(json, opt);
  
     res.set("Content-Disposition", "attachment;filename=proponentes.csv");
     res.set("Content-Type", "application/octet-stream");

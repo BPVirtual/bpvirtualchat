@@ -16,7 +16,8 @@ exports.post = function (req, res) {
     csv
      .fromString(proponentesFile.data.toString(), {
          headers: true,
-         ignoreEmpty: true
+         ignoreEmpty: true,
+         delimiter: ";"
      })
      .on("data", function(data){
          data['_id'] = new mongoose.Types.ObjectId();
